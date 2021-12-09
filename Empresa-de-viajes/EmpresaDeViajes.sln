@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpresaDeViajes", "EmpresaDeViajes\EmpresaDeViajes.csproj", "{8271FB93-4D9C-4628-AA7F-F97274315835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{6BAC1C6C-98A5-4C27-8673-12A779D6AB29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{CDD49051-2C96-48B8-9859-1E586FFF6FB7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8271FB93-4D9C-4628-AA7F-F97274315835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8271FB93-4D9C-4628-AA7F-F97274315835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8271FB93-4D9C-4628-AA7F-F97274315835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8271FB93-4D9C-4628-AA7F-F97274315835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BAC1C6C-98A5-4C27-8673-12A779D6AB29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BAC1C6C-98A5-4C27-8673-12A779D6AB29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BAC1C6C-98A5-4C27-8673-12A779D6AB29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BAC1C6C-98A5-4C27-8673-12A779D6AB29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDD49051-2C96-48B8-9859-1E586FFF6FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDD49051-2C96-48B8-9859-1E586FFF6FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDD49051-2C96-48B8-9859-1E586FFF6FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDD49051-2C96-48B8-9859-1E586FFF6FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E24436AD-0AE2-4916-ABF8-68116A4D4C41}
+	EndGlobalSection
+EndGlobal

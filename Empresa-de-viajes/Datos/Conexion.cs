@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Datos
 {
-    internal class Conexion
+    public class Conexion
     {
         /// <summary>
         /// Conexion a la Base de Datos

@@ -18,7 +18,7 @@ namespace EmpresaDeViajes
 
 
             ConsoleKeyInfo opcion;
-            string nombre, apellido, dni, nacionalidad, localidad, direccion, telefono;
+            string nombre, apellido, dni, nacionalidad, localidad, direccion, telefono,Provincia;
             string cuit, razonSocial;
             byte edad;
             DateTime fNac;
@@ -127,8 +127,21 @@ namespace EmpresaDeViajes
 
                                         Console.Write("Telefono:");
                                         telefono = Console.ReadLine();
-                                            
-                                        Dominio.Cliente ocliente = new Dominio.Cliente(esParticular, nombre, apellido, fNacimiento, dni, nacionalidad, localidad, direccion, telefono);
+
+                                        Console.Write("Provincia:");
+                                        Provincia = Console.ReadLine();
+
+                                        //Creo Cliente
+                                        Dominio.Cliente ocliente = new Dominio.Cliente(esParticular, nombre, apellido, fNacimiento, dni, nacionalidad, localidad, direccion, telefono, Provincia);
+                                        
+                                        //Grabo Cliente
+                                        ClienteContext CCtx = new ClienteContext();
+                                        int ret = CCtx.PutCliente(ocliente);
+                                        if (ret > 0) {
+                                            Console.Write("Se ha creado el Cliente exitosamente, su ID es: {0}", ret.ToString());
+                                        }
+                                        else { Console.Write("Se ha detectado un error en la creacion del Cliente"); };
+
 
                                         //-EGR-
                                         //INsertamos en BD

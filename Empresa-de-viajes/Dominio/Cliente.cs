@@ -21,7 +21,7 @@ namespace Dominio
         private string telefono;
 
         public Cliente(bool esParticular, string nombre, string apellido, DateTime Fnac,
-            string dni, string nacionalidad, string localidad, string direccion, string telefono)
+            string dni, string nacionalidad, string localidad, string direccion, string telefono,string Provincia)
         {
             this.esParticular = esParticular;
             this.nombre = nombre;
@@ -32,7 +32,7 @@ namespace Dominio
             this.localidad = localidad;
             this.direccion = direccion;
             this.telefono = telefono;
-
+            this.provincia = Provincia;
         }
 
         public int Id { get; }
@@ -55,8 +55,8 @@ namespace Dominio
         private bool esCorporativo = true;
 
         public Corporativo(int id, bool esParticular, string nombre, string apellido, DateTime Fnac, 
-                    string dni, string nacionalidad, string localidad, string direccion, string telefono, string cuit, string razonSocial, bool esCorporativo)
-            : base(esParticular, nombre, apellido, Fnac, dni, nacionalidad, localidad, direccion, telefono)
+                    string dni, string nacionalidad, string localidad, string direccion, string telefono, string cuit, string razonSocial, bool esCorporativo,string Provincia)
+            : base(esParticular, nombre, apellido, Fnac, dni, nacionalidad, localidad, direccion, telefono,Provincia)
         {
             this.cuit = cuit;
             this.razonSocial = razonSocial;

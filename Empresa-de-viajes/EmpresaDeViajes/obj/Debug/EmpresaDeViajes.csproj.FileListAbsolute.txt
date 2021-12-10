@@ -42,3 +42,21 @@ D:\Documentos\Cursos\C-Sharp-Neoris\Trabajo Integrador\Empresa-de-viajes\Empresa
 D:\Documentos\Cursos\C-Sharp-Neoris\Trabajo Integrador\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.csproj.CopyComplete
 D:\Documentos\Cursos\C-Sharp-Neoris\Trabajo Integrador\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.exe
 D:\Documentos\Cursos\C-Sharp-Neoris\Trabajo Integrador\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\EmpresaDeViajes.exe.config
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\EmpresaDeViajes.exe
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\EmpresaDeViajes.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Datos.dll
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Dominio.dll
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\EntityFramework.dll
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\EntityFramework.SqlServer.dll
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Datos.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Datos.dll.config
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Dominio.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\EntityFramework.xml
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\EntityFramework.SqlServer.xml
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.csproj.AssemblyReference.cache
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.csproj.SuggestedBindingRedirects.cache
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.csproj.CoreCompileInputs.cache
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.csproj.CopyComplete
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.exe
+D:\Documentos\Cursos\C-Sharp-Neoris\UtnTrabajoIntegrador\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.pdb

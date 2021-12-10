@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,17 +9,20 @@ namespace Dominio
 {
     public class Cliente
     {
-        private int id;
+        private int id=0;
         private bool esParticular = true;
-        private string nombre;
-        private string apellido;
-        private DateTime fnac;
-        private string dni;
-        private string nacionalidad;
-        private string provincia;
-        private string localidad;
-        private string direccion;
-        private string telefono;
+        private string nombre="";
+        private string apellido="";
+        private DateTime fnac= DateTime.ParseExact("01-01-1900", "dd-MM-yyyy", CultureInfo.InvariantCulture);
+        private string dni="";
+        private string nacionalidad="";
+        private string provincia="";
+        private string localidad="";
+        private string direccion="";
+        private string telefono="";
+
+        public Cliente() { }
+
 
         public Cliente(bool esParticular, string nombre, string apellido, DateTime Fnac,
             string dni, string nacionalidad, string localidad, string direccion, string telefono,string Provincia)

@@ -73,6 +73,54 @@ namespace EmpresaDeViajes
             return opcion;
         }
 
+        static public void NuevoClienteParticular()
+        {
+            Dominio.Cliente oClipArt = new Dominio.Cliente();
+
+            Console.Clear();
+            Console.WriteLine("***********// NUEVO CLIENTE PARTICULAR \\***********");
+
+            Console.WriteLine("Particular:"); // imprime "particular : true"
+            oClipArt.EsParticular = true;
+
+            Console.Write("Nombre:");
+            oClipArt.Nombre = Console.ReadLine();
+
+            Console.Write("Apellido:");
+            oClipArt.Apellido= Console.ReadLine();
+
+            Console.Write("Fecha de Nacimiento(DD-MM-AAAA):");
+            var strfNac = Console.ReadLine();
+            oClipArt.Fnac = DateTime.ParseExact(strfNac, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+            Console.Write("DNI:");
+            oClipArt.Dni= Console.ReadLine();
+
+            Console.Write("Nacionalidad:");
+            oClipArt.Nacionalidad= Console.ReadLine();
+
+            Console.Write("Localidad:");
+            oClipArt.Localidad= Console.ReadLine();
+
+            Console.Write("Direccion:");
+            oClipArt.Direccion= Console.ReadLine();
+
+            Console.Write("Telefono:");
+            oClipArt.Telefono= Console.ReadLine();
+
+            Console.Write("Provincia:");
+            oClipArt.Provincia= Console.ReadLine();
+
+            //Grabo Cliente
+            ClienteContext CCtx = new ClienteContext();
+            var retorno = CCtx.PutCliente(oClipArt);
+            if (retorno > 0) {
+                Console.WriteLine("Se ha creado el Cliente exitosamente, su ID es: {0}", retorno.ToString());
+            }
+            else { Console.WriteLine("Se ha detectado un error en la creacion del Cliente"); };
+            Console.WriteLine("");
+        }
+
 
         static void Main(string[] args)
         {
@@ -92,7 +140,7 @@ namespace EmpresaDeViajes
                         RetPantalla = MostrarMenuCliente();
                         switch (RetPantalla.KeyChar) {
                             case '1':
-                                RetPantalla = MostrarMenuCliente();
+                                NuevoClienteParticular();
                                 break;
                         }
                         break;
@@ -122,7 +170,6 @@ namespace EmpresaDeViajes
             List<Corporativo> clienteCorp = new List<Corporativo> ();
             ConsoleKeyInfo opcionTipoCliente;
             ConsoleKeyInfo opcionGuardado;
-
 
 
             // Menu principal
@@ -231,6 +278,7 @@ namespace EmpresaDeViajes
 
                                         Console.Write("Direccion:");
                                         direccion = Console.ReadLine();
+
 
                                         Console.Write("Telefono:");
                                         telefono = Console.ReadLine();

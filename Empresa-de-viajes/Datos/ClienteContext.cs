@@ -42,5 +42,34 @@ namespace Datos
                 return 0;
             }
         }
+        public int PutClienteCorp(Corporativo cli)
+        {
+            string strqry = "INSERT INTO [dbo].[CLIENTE] ([DNI],[NACIONALIDAD],[PROVINCIA],[FNACIMIENTO],[APELLIDO],[DIRECCION],[NOMBRE],[ESPARTICULAR],[TELEFONO],[LOCALIDAD],[CUIT],[RAZON_SOCIAL]) ";
+            strqry += " Values(@DNI,@NACIONALIDAD,@PROVINCIA,@FNACIMIENTO,@APELLIDO,@DIRECCION,@NOMBRE,@ESPARTICULAR,@TELEFONO,@LOCALIDAD,@CUIT,@RAZON_SOCIAL);select SCOPE_IDENTITY()";
+            try
+            {
+                SqlCommand cmd = new SqlCommand(strqry, base.GetConexion);
+                cmd.Parameters.Add("@DNI", System.Data.SqlDbType.Int).Value = cli.Dni;
+                cmd.Parameters.Add("@NACIONALIDAD", System.Data.SqlDbType.VarChar, 50).Value = cli.Nacionalidad;
+                cmd.Parameters.Add("@PROVINCIA", System.Data.SqlDbType.VarChar, 50).Value = cli.Provincia;
+                cmd.Parameters.Add("@FNACIMIENTO", System.Data.SqlDbType.Date).Value = cli.Fnac;
+                cmd.Parameters.Add("@APELLIDO", System.Data.SqlDbType.VarChar, 50).Value = cli.Apellido;
+                cmd.Parameters.Add("@DIRECCION", System.Data.SqlDbType.VarChar, 50).Value = cli.Direccion;
+                cmd.Parameters.Add("@NOMBRE", System.Data.SqlDbType.VarChar, 50).Value = cli.Nombre;
+                cmd.Parameters.Add("@ESPARTICULAR", System.Data.SqlDbType.Bit).Value = false;
+                cmd.Parameters.Add("@TELEFONO", System.Data.SqlDbType.VarChar, 50).Value = cli.Telefono;
+                cmd.Parameters.Add("@LOCALIDAD", System.Data.SqlDbType.VarChar, 50).Value = cli.Localidad;
+                cmd.Parameters.Add("@CUIT", System.Data.SqlDbType.VarChar, 20).Value = cli.Cuit;
+                cmd.Parameters.Add("@RAZON_SOCIAL", System.Data.SqlDbType.VarChar, 50).Value = cli.RazonSocial;
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine("Error en la insercion del Cliente Corporativo: " + Ex.Message);
+                Console.WriteLine("Error en la insercion del Cliente Corporativo: " + Ex.InnerException);
+                return 0;
+            }
+        }
+
     }
 }

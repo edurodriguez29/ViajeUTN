@@ -39,7 +39,7 @@ namespace Dominio
             this.provincia = Provincia;
         }
 
-        public int Id { get; }
+        //public int Id { get; }
         public bool EsParticular { get => esParticular; set => esParticular = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
@@ -50,25 +50,10 @@ namespace Dominio
         public string Telefono { get => telefono; set => telefono = value; }
         public DateTime Fnac { get => fnac; set => fnac = value; }
         public string Provincia { get => provincia; set => provincia = value; }
+        public bool EsCorporativo { get; set; }
+        public string Cuit { get; set; }
+        public string RazonSocial { get; set; }
     }
 
-    public class Corporativo : Cliente
-    {
-        private string cuit;
-        private string razonSocial;
-        private bool esCorporativo = true;
-
-        public Corporativo(bool esParticular, string nombre, string apellido, DateTime Fnac, 
-                    string dni, string nacionalidad, string localidad, string direccion, 
-                    string telefono, string cuit,string razonSocial, bool esCorporativo,string Provincia)
-                    : base(esParticular, nombre, apellido, Fnac, dni, nacionalidad, localidad, direccion, telefono,Provincia)
-        {
-            this.cuit = cuit;
-            this.razonSocial = razonSocial;
-        }
-
-        public string Cuit { get => cuit; set => cuit = value; }
-        public string RazonSocial { get => razonSocial; set => razonSocial = value; }
-        public bool EsCorporativo { get => esCorporativo;}
-    }
+    
 }

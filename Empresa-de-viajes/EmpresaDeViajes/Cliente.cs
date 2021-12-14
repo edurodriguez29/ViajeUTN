@@ -8,7 +8,7 @@ namespace EmpresaDeViajes
 {
     public class Cliente
     {
-        private int id;
+        private int id = 0;
         private bool esParticular = true;
         private string nombre;
         private string apellido;
@@ -52,6 +52,8 @@ namespace EmpresaDeViajes
         private string cuit;
         private string razonSocial;
         private bool esCorporativo = true;
+
+      
 
         public Corporativo(int id, bool esParticular, string nombre, string apellido, byte edad, string dni, string nacionalidad, string localidad, string direccion, string telefono, string cuit, string razonSocial, bool esCorporativo)
             : base(id, esParticular, nombre, apellido, edad, dni, nacionalidad, localidad, direccion, telefono)

@@ -44,7 +44,7 @@ namespace EmpresaDeViajes
         /// <returns></returns>
         static public ConsoleKeyInfo MostrarMenuCliente()
         {
-            ConsoleKeyInfo opcion;
+            ConsoleKeyInfo opcionCliente;
             do {
                 Console.Clear();
                 Console.WriteLine("********** Menu Cliente ***********");
@@ -52,11 +52,10 @@ namespace EmpresaDeViajes
                 Console.WriteLine("1 - Crear un nuevo cliente");
                 Console.WriteLine("2 - Ver datos de un cliente");
                 Console.WriteLine("3 - Modificar datos de un cliente");
-                Console.WriteLine("4 - Ver listado de clientes");
-                Console.WriteLine("5 - Eliminar un cliente");
-                opcion = Console.ReadKey();
-            } while (((int)opcion.KeyChar != 08) && (opcion.KeyChar < '1' || opcion.KeyChar > '5'));
-            return opcion;
+                Console.WriteLine("4 - Eliminar un cliente");
+                opcionCliente = Console.ReadKey();
+            } while (((int)opcionCliente.KeyChar != 08) && (opcionCliente.KeyChar < '1' || opcionCliente.KeyChar > '4'));
+            return opcionCliente;
         }
 
         static public ConsoleKeyInfo NuevoCliente()
@@ -178,16 +177,90 @@ namespace EmpresaDeViajes
        static public ConsoleKeyInfo QueDeseaHacer()
         {
             ConsoleKeyInfo opcionGuardado;
-            do { 
-            Console.WriteLine();// Decoracion de consola
-            Console.WriteLine("1 - Si");
-            Console.WriteLine("2 - No");
-            Console.WriteLine();//Decoracion consola
+            do {
+                Console.WriteLine();
+                Console.WriteLine("1 - Si");
+                Console.WriteLine("2 - No");
+                Console.WriteLine();
             
                 opcionGuardado = Console.ReadKey(true);
             } while (opcionGuardado.KeyChar < '1' || opcionGuardado.KeyChar > '2');
             return opcionGuardado;
         }
+
+
+        static public ConsoleKeyInfo InfoDeUnCliente()
+        {
+            ConsoleKeyInfo opcionInfo;
+            do {
+                Console.Clear();
+                Console.WriteLine("*********// VER INFORMACION DE CLIENTES \\********");
+                Console.WriteLine();
+                Console.WriteLine("Acontinuacion elija el tipo de cliente para acceder a la informacion del mismo:");
+                Console.WriteLine("1 - Cliente particular");
+                Console.WriteLine("2 - Cliente corporativo");
+                Console.WriteLine("Backspace - Para volver al menu principal");
+                Console.WriteLine();
+                opcionInfo = Console.ReadKey();
+            } while (((int)opcionInfo.KeyChar != 08) && (opcionInfo.KeyChar < '1' || opcionInfo.KeyChar > '2'));
+            return opcionInfo;
+        }
+
+        static public void VerInfoDeUnCliParticular()
+        {
+            Console.Clear();
+            Console.WriteLine("*****************// PARTICULAR \\******************");
+            Console.WriteLine();
+            Console.Write("Ingrese el numero de cliente: ");
+
+            // Por que dato se va a buscar al cliente???, el ID es autoincremental y uno no tiene forma de saver que ID le toca a cada cliente.
+
+            /*int.TryParse(Console.ReadLine(), out nroCliente);
+            Console.WriteLine(deco.b2); // Decoracion de consola
+                                        // Por cada elemento (x) de la lista dame el primero que su atributo sea igual a "nroCliente"
+            cli = liClientes.Find(x => x.NroCliente == nroCliente);
+            if (cli != null) {
+                cli.mostrarDatos(); // No me muestra la info del cliente
+            }
+            else {
+                // Me redirecciona automaticamente aqui sin mostrarme los datos del cliente
+                Console.WriteLine(deco.b2);//Decoracion consola
+                Console.WriteLine("¡¡¡No se encontro el cliente con numero: " + nroCliente + " !!!");
+                Console.WriteLine(deco.b2);//Decoracion consola
+            }*/
+        }
+
+        static public void VerInfoDeUnCliCorporativo()
+        {
+            Console.Clear();
+            Console.WriteLine("*****************// PARTICULAR \\******************");
+            Console.WriteLine();
+            Console.Write("Ingrese el numero de cliente: ");
+
+            // Por que dato se va a buscar al cliente???, el ID es autoincremental y uno no tiene forma de saver que ID le toca a cada cliente.
+
+            /*int.TryParse(Console.ReadLine(), out nroCliente);
+            Console.WriteLine(deco.b2); // Decoracion de consola
+                                        // Por cada elemento (x) de la lista dame el primero que su atributo sea igual a "nroCliente"
+            cli = liClientes.Find(x => x.NroCliente == nroCliente);
+            if (cli != null) {
+                cli.mostrarDatos(); // No me muestra la info del cliente
+            }
+            else {
+                // Me redirecciona automaticamente aqui sin mostrarme los datos del cliente
+                Console.WriteLine(deco.b2);//Decoracion consola
+                Console.WriteLine("¡¡¡No se encontro el cliente con numero: " + nroCliente + " !!!");
+                Console.WriteLine(deco.b2);//Decoracion consola
+            }*/
+        }
+
+
+
+
+        /// <summary>
+        /// /////////////////////////////////////////////////////////////////////
+        /// </summary>
+        /// <param name="args"></param>
 
 
         static void Main(string[] args)
@@ -215,21 +288,37 @@ namespace EmpresaDeViajes
                                         Console.WriteLine("Desea cargar otro cliente?");
                                         QueDeseaHacer();
                                         switch (RetPantalla.KeyChar) {
-                                            case '1':
+                                            case '1': // revisar, no redirecciona
                                                 NuevoCliente();
                                                 break;
-                                            case '2':
+                                            case '2':// revisar, no redirecciona
                                                 MostrarMenuCliente();
                                                 break;
                                         }
                                         break;
                                     case '2':
                                         NuevoClienteCorporativo();
+                                        Console.WriteLine("Desea cargar otro cliente?");
+                                        QueDeseaHacer();
+                                        switch (RetPantalla.KeyChar) {
+                                            case '1': // revisar, no redirecciona
+                                                NuevoCliente();
+                                                break;
+                                            case '2':// revisar, no redirecciona
+                                                MostrarMenuCliente();
+                                                break;
+                                        }
                                         break;
                                 }
                                 break;
+
+                            // VER INFO DE UN CLIENTE
+                            case '2': //Falla, me redirecciona a el menu de crear un nuevo cliente.
+                                InfoDeUnCliente();
+                               break; 
                         }
                         break;
+
                     case '2':
                         //Muestra Pantalla de Facturas
                         break;

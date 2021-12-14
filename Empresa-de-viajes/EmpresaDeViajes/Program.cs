@@ -73,7 +73,7 @@ namespace EmpresaDeViajes
                                                 MainScreen.VerUnParticular();
                                                 break;
                                             case '2':
-                                                //Ver infoCliCorporativo !!! Pendiente
+                                                MainScreen.VerUnCorporativo();
                                                 break;
                                         }
                                         break;

@@ -31,10 +31,9 @@ namespace EmpresaDeViajes
                 Console.WriteLine("1 - Clientes");
                 Console.WriteLine("2 - Facturas");
                 Console.WriteLine("3 - Paquetes");
-                Console.WriteLine("4 - Ventas");
                 Console.WriteLine("Esc - Para salir");
                 opcion = Console.ReadKey();
-            } while (((int)opcion.KeyChar != 27) && (opcion.KeyChar < '1' || opcion.KeyChar > '4'));
+            } while (((int)opcion.KeyChar != 27) && (opcion.KeyChar < '1' || opcion.KeyChar > '3'));
             return opcion;
         }
 
@@ -53,9 +52,10 @@ namespace EmpresaDeViajes
                 Console.WriteLine("1 - Crear un nuevo cliente");
                 Console.WriteLine("2 - Ver datos de un cliente");
                 Console.WriteLine("3 - Modificar datos de un cliente");
-                Console.WriteLine("4 - Eliminar un cliente");
+                Console.WriteLine("4 - Ver listado de clientes");
+                Console.WriteLine("5 - Eliminar un cliente");
                 opcion = Console.ReadKey();
-            } while (((int)opcion.KeyChar != 08) && (opcion.KeyChar < '1' || opcion.KeyChar > '4'));
+            } while (((int)opcion.KeyChar != 08) && (opcion.KeyChar < '1' || opcion.KeyChar > '5'));
             return opcion;
         }
 
@@ -123,52 +123,51 @@ namespace EmpresaDeViajes
 
         static public void NuevoClienteCorporativo()
         {
-            Dominio.Corporativo corp = new Dominio.Corporativo();
+            Dominio.Corporativo clieCorp = new Dominio.Corporativo();
 
             Console.Clear();
-            Console.WriteLine("***********// NUEVO CLIENTE CORPORATIVO \\***********");
+            Console.WriteLine("***********// NUEVO CLIENTE PARTICULAR \\***********");
 
             Console.WriteLine("Particular:"); // imprime "particular : true"
-            corp.EsParticular = true;
-
-            Console.WriteLine("Corporativo"); // imprime "particular : true"
-            corp.EsCorporativo = true;
+            clieCorp.EsParticular = true;
 
             Console.Write("Nombre:");
-            corp.Nombre = Console.ReadLine();
+            clieCorp.Nombre = Console.ReadLine();
 
             Console.Write("Apellido:");
-            corp.Apellido = Console.ReadLine();
+            clieCorp.Apellido = Console.ReadLine();
 
             Console.Write("Fecha de Nacimiento(DD-MM-AAAA):");
             var strfNac = Console.ReadLine();
-            corp.Fnac = DateTime.ParseExact(strfNac, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+            clieCorp.Fnac = DateTime.ParseExact(strfNac, "dd-MM-yyyy", CultureInfo.InvariantCulture);
 
             Console.Write("DNI:");
-            corp.Dni = Console.ReadLine();
+            clieCorp.Dni = Console.ReadLine();
 
             Console.Write("Nacionalidad:");
-            corp.Nacionalidad = Console.ReadLine();
+            clieCorp.Nacionalidad = Console.ReadLine();
 
             Console.Write("Localidad:");
-            corp.Localidad = Console.ReadLine();
+            clieCorp.Localidad = Console.ReadLine();
 
             Console.Write("Direccion:");
-            corp.Direccion = Console.ReadLine();
+            clieCorp.Direccion = Console.ReadLine();
 
             Console.Write("Telefono:");
-            corp.Telefono = Console.ReadLine();
+            clieCorp.Telefono = Console.ReadLine();
+
+            Console.Write("Provincia:");
+            clieCorp.Provincia = Console.ReadLine();
 
             Console.Write("CUIT:");
-            corp.Cuit = Console.ReadLine();
+            clieCorp.Cuit = Console.ReadLine();
 
             Console.Write("Razon social:");
-            corp.RazonSocial = Console.ReadLine();
-
+            clieCorp.RazonSocial = Console.ReadLine();
 
             //Grabo Cliente
             ClienteContext CCtx = new ClienteContext();
-            var retorno = CCtx.PutCliente(corp);
+            var retorno = CCtx.PutCliente(clieCorp);
             if (retorno > 0) {
                 Console.WriteLine("Se ha creado el Cliente exitosamente, su ID es: {0}", retorno.ToString());
             }
@@ -176,103 +175,26 @@ namespace EmpresaDeViajes
             Console.WriteLine("");
         }
 
-
-        static public ConsoleKeyInfo QueDeseaHacer()
+       static public ConsoleKeyInfo QueDeseaHacer()
         {
-            //!!!!!!Revisar, porque no vuleve al menu principal, solo redirecciona a "NuevoCliente"¡¡¡¡¡¡
             ConsoleKeyInfo opcionGuardado;
-            do {
-                Console.WriteLine("1 - Si");
-                Console.WriteLine("2 - No");
-                opcionGuardado = Console.ReadKey(false);
+            do { 
+            Console.WriteLine();// Decoracion de consola
+            Console.WriteLine("1 - Si");
+            Console.WriteLine("2 - No");
+            Console.WriteLine();//Decoracion consola
+            
+                opcionGuardado = Console.ReadKey(true);
             } while (opcionGuardado.KeyChar < '1' || opcionGuardado.KeyChar > '2');
             return opcionGuardado;
-
-        }
-
-        static public ConsoleKeyInfo VerInfoCli()
-        {
-            ConsoleKeyInfo opcionInfo;
-
-            do {
-                Console.Clear();
-                Console.WriteLine("*********// VER INFORMACION DE CLIENTES \\********");
-                Console.WriteLine();//Decoracion consola
-                Console.WriteLine("Acontinuacion elija el tipo de cliente para acceder a la informacion del mismo:");
-                Console.WriteLine();// Decoracion de consola
-                Console.WriteLine("1 - Cliente particular");
-                Console.WriteLine("2 - Cliente corporativo");
-                Console.WriteLine("Backspace - Para volver al menu principal");
-                Console.WriteLine();//Decoracion consola
-                Console.WriteLine();//Decoracion consola
-
-                opcionInfo = Console.ReadKey(false);
-            } while (((int)opcionInfo.KeyChar != 08) && (opcionInfo.KeyChar < '1' || opcionInfo.KeyChar > '2'));
-            return opcionInfo;
-        }
-
-        static public void VerUnParticular()
-        {
-            Console.WriteLine("*****************// PARTICULAR \\******************");
-
-            // Por que dato se va a traer la info de un cliente determinado?????
-            Console.WriteLine("Aqui se imprime info cliente");
-            
-        }
-
-        static public void VerUnCorporativo()
-        {
-            Console.WriteLine("*****************// PARTICULAR \\******************");
-
-            // Por que dato se va a traer la info de un cliente determinado?????
-            Console.WriteLine("Aqui se imprime info cliente");
-
-        }
-
-        static public ConsoleKeyInfo ModificarCliente()
-        {
-            ConsoleKeyInfo opcionTipoCliente;
-
-            do {
-            Console.WriteLine("***********// MODIFICAR INFORMACION DE CLIENTES \\***********");
-            Console.WriteLine();//Decoracion consola
-            Console.WriteLine("Acontinuacion elija el tipo de cliente a modificar: ");
-            Console.WriteLine();//Decoracion consola
-            Console.WriteLine("1 -  Cliente particular");
-            Console.WriteLine("2 - Cliente corporativo");
-            Console.WriteLine("Backspace - Para volver al menu principal");
-            Console.WriteLine();//Decoracion consola
-            Console.WriteLine();//Decoracion consola
-            
-                opcionTipoCliente = Console.ReadKey(true);
-            } while (((int)opcionTipoCliente.KeyChar != 08) && (opcionTipoCliente.KeyChar < '1' || opcionTipoCliente.KeyChar > '2'));
-            return opcionTipoCliente;
         }
 
 
-
-
-        /// <summary>
-        /// ///////////////////////////////////////////////////////////////////////////////////////////////////
-        /// </summary>
-        /// <param name="args"></param>
-        /// 
-
-
-
-
-
-
-
-
-
-
-        // MGN
         static void Main(string[] args)
         {
             //Nuevo Modelos de Datos
             EmpresaContext empresaContext = new Datos.EmpresaContext();
-            Empresa Emp = empresaContext.GetEmpresa();
+            Dominio.Empresa Emp = empresaContext.GetEmpresa();
             ConsoleKeyInfo RetPantalla;
             //Nuevo Modelos de Datos
 
@@ -283,7 +205,7 @@ namespace EmpresaDeViajes
                 switch (RetPantalla.KeyChar) { 
                     case '1':
                         //Muestra Pantalla de Clientes
-                        RetPantalla = MostrarMenuCliente();
+                        MostrarMenuCliente();
                         switch (RetPantalla.KeyChar) {
                             case '1':
                                 NuevoCliente();
@@ -292,67 +214,19 @@ namespace EmpresaDeViajes
                                         NuevoClienteParticular();
                                         Console.WriteLine("Desea cargar otro cliente?");
                                         QueDeseaHacer();
-                                        switch(RetPantalla.KeyChar) {
+                                        switch (RetPantalla.KeyChar) {
                                             case '1':
                                                 NuevoCliente();
                                                 break;
                                             case '2':
-                                                MostrarPantallaPrincipal(Emp);
+                                                MostrarMenuCliente();
                                                 break;
                                         }
                                         break;
-
                                     case '2':
                                         NuevoClienteCorporativo();
-                                        Console.WriteLine("Desea cargar otro cliente?");
-                                        QueDeseaHacer();
-                                        switch(RetPantalla.KeyChar) {
-                                            case '1':
-                                                NuevoCliente();
-                                                break;
-                                            case '2':
-                                                MostrarPantallaPrincipal(Emp);
-                                                break;
-                                        }
                                         break;
                                 }
-                                break;
-
-                            case '2':
-                                VerInfoCli();
-                                switch (RetPantalla.KeyChar) {
-                                    case '1':
-                                        VerUnParticular();//terminar, esta incompleto
-                                        Console.WriteLine("Desea ver la informacion de otro cliente?");
-                                        QueDeseaHacer();
-                                        switch (RetPantalla.KeyChar) {
-                                            case '1':
-                                                VerInfoCli();
-                                                break;
-                                            case '2':
-                                                MostrarPantallaPrincipal(Emp);
-                                                break;
-                                        }
-                                        break;
-
-                                    case '2':
-                                        VerUnCorporativo();//terminar, esta incompleto
-                                        Console.WriteLine("Desea ver la informacion de otro cliente?");
-                                        QueDeseaHacer();
-                                        switch (RetPantalla.KeyChar) {
-                                            case '1':
-                                                VerInfoCli();
-                                                break;
-                                            case '2':
-                                                MostrarPantallaPrincipal(Emp);
-                                                break;
-                                        }
-                                        break;
-                                }
-                                break;
-
-                            case '3':
-                                ModificarCliente(); //Me quede por aca
                                 break;
                         }
                         break;
@@ -368,8 +242,7 @@ namespace EmpresaDeViajes
 
 
             Console.Write("FIN");
-
-
+        
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using Dominio;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -71,5 +72,33 @@ namespace Datos
             }
         }
 
+        /// <summary>
+        /// Obtiene 
+        /// </summary>
+        /// <param name="apellido"></param>
+        /// <returns>Lista de Clientes</returns>
+        public List<Dominio.Cliente> GetClientes(string apellido)
+        {
+            
+            string par1 = "'%" + apellido + "%'";
+            string strqry = "Select ID,DNI,Nacionalidad,Provincia,Fnacimiento as Fnac,Apellido,Direccion,Nombre,EsParticular,Telefono,Localidad From Cliente Where Cliente.ESPARTICULAR=1 and Apellido like " + par1;
+            
+            try
+            {
+                //Hago query, transformo DataSet a DataTable y a List para manejar standar de C#
+                SqlDataAdapter DA = new SqlDataAdapter(strqry, base.GetConexion);
+                DataSet DS = new DataSet();
+                DA.Fill(DS);
+                DataTable DT = DS.Tables[0];
+                List<Dominio.Cliente> ListaClientes = DT.DataTableToList<Dominio.Cliente>();
+                return ListaClientes;
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine("Error en la insercion del Cliente: " + Ex.Message);
+                Console.WriteLine("Error en la insercion del Cliente: " + Ex.InnerException);
+                return new List<Cliente>();
+            }
+        }
     }
 }

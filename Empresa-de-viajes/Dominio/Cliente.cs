@@ -53,6 +53,7 @@ namespace Dominio
         public bool EsCorporativo { get; set; }
         public string Cuit { get; set; }
         public string RazonSocial { get; set; }
+        public int Id { get => id; set => id = value; }
     }
 
     

@@ -100,5 +100,35 @@ namespace Datos
             }
         }
 
+        /// <summary>
+        /// Lista las EMpresas
+        /// </summary>
+        /// <param name="RazonSocial"></param>
+        /// <returns></returns>
+        public List<Dominio.Corporativo> GetClientesCorporativos(string RazonSocial)
+        {
+
+            string par1 = "'%" + RazonSocial + "%'";
+            string strqry = "Select ID,DNI,Nacionalidad,Provincia,Fnacimiento as Fnac,Apellido,Direccion,Nombre,EsParticular,Telefono,Localidad " +
+                ",EsCorporativo=1,CUIT,Razon_social as razonSocial " +            
+                "From Cliente Where Cliente.ESPARTICULAR=0 and Razon_social like " + par1;
+
+            try
+            {
+                //Hago query, transformo DataSet a DataTable y a List para manejar standar de C#
+                SqlDataAdapter DA = new SqlDataAdapter(strqry, base.GetConexion);
+                DataSet DS = new DataSet();
+                DA.Fill(DS);
+                DataTable DT = DS.Tables[0];
+                List<Dominio.Corporativo> ListaClientes = DT.DataTableToList<Dominio.Corporativo>();
+                return ListaClientes;
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine("Error en la insercion del Cliente: " + Ex.Message);
+                Console.WriteLine("Error en la insercion del Cliente: " + Ex.InnerException);
+                return new List<Corporativo>();
+            }
+        }
     }
 }

@@ -242,10 +242,29 @@ namespace EmpresaDeViajes
 
         public void VerUnCorporativo()
         {
-            Console.WriteLine("*****************// PARTICULAR \\******************");
+            ConsoleKeyInfo opcionInfo;
+            Console.WriteLine("*****************// VER CLIENTE CORPORATIVO \\******************");
 
-            // Por que dato se va a traer la info de un cliente determinado?????
-            Console.WriteLine("Aqui se imprime info cliente");
+            ClienteContext CliCtx = new ClienteContext();
+            Console.Write("Ingrese razon Social:");
+            string rz = Console.ReadLine();
+            List<Dominio.Corporativo> ListaCorporativos = CliCtx.GetClientesCorporativos(rz);
+
+            if (ListaCorporativos.Count > 0) {
+                Console.Clear();
+                Console.WriteLine("---- Listado de Empresas Corporativas Encontradas----");
+                foreach (var item in ListaCorporativos) {
+                    Console.WriteLine($"ID:{item.Id} | Razon Social :{item.RazonSocial} | CUIT:{item.Cuit} | Nombre:{item.Nombre} | Localidad: {item.Localidad}");
+                }
+            }
+            else {
+                Console.Clear();
+                Console.WriteLine("---- No se encuentran datos para la consulta que esta realizando----");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.Write("Presione cualquier tecla para continuar");
+            opcionInfo = Console.ReadKey(false);
 
         }
 

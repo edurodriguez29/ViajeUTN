@@ -14,6 +14,7 @@ namespace Datos
         /// <summary>
         /// Graba un Cliente en la Base de Datos
         /// </summary>
+        /// <param name="cli"></param>
         /// <returns></returns>
         public int PutCliente(Cliente cli) {
 

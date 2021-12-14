@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "cdd49051-2c96-48b8-9859-1e586fff6fb7": {
+      "ProjectGuid": "cdd49051-2c96-48b8-9859-1e586fff6fb7",
+      "DisplayName": "Dominio",
+      "ColorIndex": 0
+    },
+    "8271fb93-4d9c-4628-aa7f-f97274315835": {
+      "ProjectGuid": "8271fb93-4d9c-4628-aa7f-f97274315835",
+      "DisplayName": "EmpresaDeViajes",
+      "ColorIndex": 1
+    },
+    "6bac1c6c-98a5-4c27-8673-12a779d6ab29": {
+      "ProjectGuid": "6bac1c6c-98a5-4c27-8673-12a779d6ab29",
+      "DisplayName": "Datos",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}

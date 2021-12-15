@@ -16,7 +16,7 @@ namespace Datos
         {
             Empresa Emp = new Empresa();
             string sql = "Select top 1 * from Empresa;";
-            SqlCommand cmd = new SqlCommand(sql, cn.GetConexion);
+           SqlCommand cmd = new SqlCommand(sql, cn.GetConexion);
             using (SqlDataReader reader=cmd.ExecuteReader())
             {
                 while (reader.Read())

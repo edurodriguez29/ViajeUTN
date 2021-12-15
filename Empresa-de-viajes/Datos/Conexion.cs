@@ -27,7 +27,12 @@ namespace Datos
 
             string strconeccion = "server=" + server + ";Initial Catalog=" + baseDatos + ";Persist Security Info=" 
                 + persistSecurityInfo + ";Integrated Security=" + IntegratedSecurity + ";database=" + baseDatos + ";Connection Timeout =" + timeOut;
-            
+
+
+    /*add name = "BecaContext" connectionString = "Data Source=.;Initial Catalog=BaseBeca;Integrated Security=SSPI;" providerName = "System.Data.SqlClient" />*/
+
+
+
             try
             {
                 cn=new SqlConnection(strconeccion);

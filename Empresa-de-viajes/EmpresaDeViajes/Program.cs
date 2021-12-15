@@ -70,16 +70,16 @@ namespace EmpresaDeViajes
                                         RetPantalla = MainScreen.QueDeseaHacer();
                                         switch (RetPantalla.KeyChar) {
                                             case '1':
-                                                MainScreen.VerUnParticular();
+                                                MainScreen.VerInfoCli();
                                                 break;
                                             case '2':
-                                                MainScreen.VerUnCorporativo();
+                                                MainScreen.MostrarPantallaPrincipal(Emp);
                                                 break;
                                         }
                                         break;
 
                                     case '2':
-                                        MainScreen.VerUnCorporativo();//terminar, esta incompleto
+                                        MainScreen.VerUnCorporativo();
                                         Console.WriteLine("Desea ver la informacion de otro cliente?");
                                         MainScreen.QueDeseaHacer();
                                         switch (RetPantalla.KeyChar) {
@@ -95,7 +95,36 @@ namespace EmpresaDeViajes
                                 break;
 
                             case '3':
-                                MainScreen.ModificarCliente(); //Me quede por aca
+                                //Error al tratar de modificar el cliente
+                                RetPantalla = MainScreen.ModificarCliente(); 
+                                switch(RetPantalla.KeyChar) {
+                                    case '1':
+                                    MainScreen.ModificarParticular();
+                                        Console.WriteLine("¿Desea seguir editando?:");
+                                        MainScreen.QueDeseaHacer();
+                                        switch (RetPantalla.KeyChar) {
+                                            case '1':
+                                                MainScreen.ModificarCliente();
+                                                break;
+                                            case '2':
+                                                MainScreen.MostrarPantallaPrincipal(Emp);
+                                                break;
+                                        }
+                                        break;
+                                    case '2':
+                                        MainScreen.ModificarCorporativo();
+                                        Console.WriteLine("¿Desea seguir editando?:");
+                                        MainScreen.QueDeseaHacer();
+                                        switch (RetPantalla.KeyChar) {
+                                            case '1':
+                                                MainScreen.ModificarCorporativo();
+                                                break;
+                                            case '2':
+                                                MainScreen.MostrarPantallaPrincipal(Emp);
+                                                break;
+                                        }
+                                        break;
+                                }
                                 break;
                         }
                         break;

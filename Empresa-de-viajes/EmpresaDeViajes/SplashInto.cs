@@ -188,6 +188,147 @@ namespace EmpresaDeViajes
             return opcionGuardado;
         }
 
+        /// <summary>
+        /// Muestra menus de Paquetes
+        /// </summary>
+        /// <returns></returns>
+        public ConsoleKeyInfo MostrarMenuPaquete()
+        {
+            ConsoleKeyInfo opcionGuardado;
+            do {
+                Console.Clear();
+                Console.WriteLine("*********// MENU DE PAQUETES \\********");
+                Console.WriteLine("1 - Crear Nuevo Paquete");
+                Console.WriteLine("2 - Listar Paquetes");
+                opcionGuardado = Console.ReadKey(false);
+            } while (((int)opcionGuardado.KeyChar <= 1 && (int)opcionGuardado.KeyChar >= 2) && (int)opcionGuardado.KeyChar != 27);
+            return opcionGuardado;
+        }
+        /// <summary>
+        /// Crea un  nuevo Paquete
+        /// </summary>
+        public void CrearNuevoPaquete()
+        {
+            ConsoleKeyInfo opcion;
+            Dominio.Paquete oPaquete = new Dominio.Paquete();
+            Dominio.Lugares oLugares;
+            try {
+                Console.Clear();
+                Console.WriteLine("***********// NUEVO PAQUETE \\***********");
+
+                Console.Write("¿Que tipo de Paquete desea crear?, ¿Nacional ó Internaciona? (Int/Nac):");
+                oPaquete.EsNacional = Console.ReadLine().ToUpper() == "NAC";
+
+                Console.WriteLine("");
+                Console.WriteLine("");
+                if (oPaquete.EsNacional) { 
+                    Console.WriteLine("******************* PAQUETE NACIONAL ***************"); 
+                }
+                else {
+                    Console.WriteLine("******************* PAQUETE INTERNACIONAL ***************");
+                }
+
+                Console.Write("Nombre del Paquete:");
+                oPaquete.Nombre = Console.ReadLine();
+
+                Console.Write("Precio:");
+                oPaquete.Precio = Convert.ToDouble(Console.ReadLine());
+
+                Console.Write("Fecha de Inicio de Disponibilidad  (DD-MM-AAAA):");
+                var strfecha = Console.ReadLine();
+                oPaquete.Fecha_Inicio = DateTime.ParseExact(strfecha, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+                Console.Write("Fecha de Fin de Disponibilidad(DD-MM-AAAA):");
+                strfecha = Console.ReadLine();
+                oPaquete.Fecha_Fin = DateTime.ParseExact(strfecha, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+                Console.Write("cantidad de Días:");
+                oPaquete.CantDias = Convert.ToInt32(Console.ReadLine());
+
+                if (oPaquete.EsNacional) {
+                    //Nacional
+                    
+                    Console.Write("¿Que % de Impuestos se aplicara?(0-100):");
+                    oPaquete.ImpuestoNacional = Convert.ToDouble(Console.ReadLine());
+
+                    Console.Write("Cantidad de Cuotas (1-12):");
+                    oPaquete.CantCuotas = Convert.ToInt32(Console.ReadLine());
+                    if (oPaquete.CantCuotas <= 0 || oPaquete.CantCuotas > 12) {
+                        Console.WriteLine("Ups!!!, ha ingresado un valor incorrecto.Pruebe de Nuevo :-P");
+                        return;
+                    }
+                }
+                else {
+                    //Internacional
+                    Console.Write("Cotizacion del Dolar:");
+                    oPaquete.CotizacionDol = Convert.ToDouble(Console.ReadLine());
+
+                    Console.Write("El Paquete ¿Requiere VISA? (No/Si):");
+                    oPaquete.RequiereVisa = Console.ReadLine().ToUpper() == "SI";
+
+                    Console.Write("Impuesto de Valor Fijo:");
+                    oPaquete.ImpuestoInt = Convert.ToDouble(Console.ReadLine());
+
+                    Console.Write("Cantidad de Cuotas (1-6):");
+                    oPaquete.CantCuotas = Convert.ToInt32(Console.ReadLine());
+                    if (oPaquete.CantCuotas<=0 || oPaquete.CantCuotas > 6) {
+                        Console.WriteLine("Ups!!!, ha ingresado un valor incorrecto.Pruebe de Nuevo :-P");
+                        return;
+                    }
+                }
+                
+                oPaquete.Activo = true;
+                string destino;
+                do {
+                    Console.Clear();
+                    Console.WriteLine("*********// INGRESO DE DESTINOS \\********");
+                    Console.WriteLine("");
+                    Console.WriteLine("para terminar->fin");
+                    Console.WriteLine("");
+                    Console.Write("Nombre del Destino:");
+                    destino = Console.ReadLine().Trim().ToUpper();
+                    if (destino=="FIN" || destino=="") { break;}
+
+                    //Ya existe el Destino?
+                    var lugar = oPaquete.Lugares.FirstOrDefault(x => x.Nombre == destino);
+                    if (lugar == null) {
+                        //Lo inserto
+                        oLugares = new Dominio.Lugares();
+                        oLugares.Nombre = destino;
+                        oPaquete.Lugares.Add(oLugares);
+                    }
+                    else {
+                        Console.WriteLine("El destino que ha ingresado ya existe en este Paquete");
+                        Console.WriteLine("Presione cualquier tecla para constinuar");
+                        destino=Console.ReadLine();
+                    }
+                }
+                while (true);
+
+                //Insercion de Objetos en la base de Datos
+                PaqueteContext opaqueteContext = new PaqueteContext();
+                if (opaqueteContext.PutPaquete(oPaquete)) {
+                    Console.WriteLine($"Se ha creado el paquete con el Identificador:{oPaquete.Id}");
+                }
+                else {
+                    Console.WriteLine("Se ha detectado un error en la insercion del Paquete");
+                }
+                
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("Presione cualquier tecla parac Continuar");
+                opcion = Console.ReadKey();
+            }
+            catch (Exception Ex) {
+                Console.WriteLine("Error en la insercion del Paquete: " + Ex.Message);
+                Console.WriteLine("Error en la insercion del Paquete: " + Ex.InnerException);
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("Presione cualquier tecla parac ontinuar");
+                opcion = Console.ReadKey();
+            }
+        }
+
         public ConsoleKeyInfo VerInfoCli()
         {
             ConsoleKeyInfo opcionInfo;
@@ -271,7 +412,6 @@ namespace EmpresaDeViajes
         public ConsoleKeyInfo ModificarCliente()
         {
             ConsoleKeyInfo opcionTipoCliente;
-
             do {
                 Console.WriteLine("***********// MODIFICAR INFORMACION DE CLIENTES \\***********");
                 Console.WriteLine();//Decoracion consola
@@ -282,7 +422,6 @@ namespace EmpresaDeViajes
                 Console.WriteLine("Backspace - Para volver al menu principal");
                 Console.WriteLine();//Decoracion consola
                 Console.WriteLine();//Decoracion consola
-
                 opcionTipoCliente = Console.ReadKey(true);
             } while (((int)opcionTipoCliente.KeyChar != 08) && (opcionTipoCliente.KeyChar < '1' || opcionTipoCliente.KeyChar > '2'));
             return opcionTipoCliente;

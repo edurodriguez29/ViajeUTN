@@ -78,7 +78,6 @@ namespace Datos
         /// <returns>Lista de Clientes</returns>
         public List<Dominio.Cliente> GetClientes(string apellido)
         {
-
             string par1 = "'%" + apellido + "%'";
             string strqry = "Select ID,DNI,Nacionalidad,Provincia,Fnacimiento as Fnac,Apellido,Direccion,Nombre,EsParticular,Telefono,Localidad From Cliente Where Cliente.ESPARTICULAR=1 and Apellido like " + par1;
 

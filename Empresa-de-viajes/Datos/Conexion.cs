@@ -24,7 +24,6 @@ namespace Datos
             string persistSecurityInfo = "true";
             string timeOut = "2";
 
-
             string strconeccion = "server=" + server + ";Initial Catalog=" + baseDatos + ";Persist Security Info=" 
                 + persistSecurityInfo + ";Integrated Security=" + IntegratedSecurity + ";database=" + baseDatos + ";Connection Timeout =" + timeOut;
             

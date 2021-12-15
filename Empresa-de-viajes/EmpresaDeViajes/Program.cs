@@ -103,7 +103,20 @@ namespace EmpresaDeViajes
                         //Muestra Pantalla de Facturas
                         break;
                     case '3':
-                        //Muestra Pantalla de Facturas
+                        //Paquetes
+                        RetPantalla = MainScreen.MostrarMenuPaquete();
+                        switch (RetPantalla.KeyChar) {
+                            //1 - Crear Nuevo Paquete
+                            case '1':
+                                MainScreen.CrearNuevoPaquete();
+                                break;
+                            //2 - Listar Paquetes
+                            case '2':
+                                break;
+                        }
+                        break;
+                    case '4':
+                        //Ventas
                         break;
                 }
             } while ((int)RetPantalla.KeyChar != 27);

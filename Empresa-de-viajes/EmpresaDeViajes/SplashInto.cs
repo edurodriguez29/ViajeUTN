@@ -30,7 +30,7 @@ namespace EmpresaDeViajes
                 Console.WriteLine("1 - Clientes");
                 Console.WriteLine("2 - Facturas");
                 Console.WriteLine("3 - Paquetes");
-                Console.WriteLine("4 - Ventas");
+                Console.WriteLine("4 - Ventas - Facturación");
                 Console.WriteLine("Esc - Para salir");
                 opcion = Console.ReadKey();
             } while (((int)opcion.KeyChar != 27) && (opcion.KeyChar < '1' || opcion.KeyChar > '4'));
@@ -204,6 +204,63 @@ namespace EmpresaDeViajes
             } while (((int)opcionGuardado.KeyChar <= 1 && (int)opcionGuardado.KeyChar >= 2) && (int)opcionGuardado.KeyChar != 27);
             return opcionGuardado;
         }
+
+        
+        public ConsoleKeyInfo MostrarMenuVentas()
+        {
+            ConsoleKeyInfo opcionGuardado;
+            do {
+                Console.Clear();
+                Console.WriteLine("*********// MENU DE VENTA DE PAQUETES \\********");
+                Console.WriteLine("1 - Facturar a Cliente");
+                Console.WriteLine("2 - Listar Factura");
+                opcionGuardado = Console.ReadKey(false);
+            } while (((int)opcionGuardado.KeyChar <= 1 && (int)opcionGuardado.KeyChar >= 2) && (int)opcionGuardado.KeyChar != 27);
+            return opcionGuardado;
+        }
+
+        /// <summary>
+        /// Se genera una factura a un Cliente x los Paquetes Solicitados
+        /// </summary>
+        public void FacturarACliente() {
+            string introTeclado = "";
+            bool Salir = false;
+            ConsoleKeyInfo opcionInfo;
+            Dominio.Cliente oCliente=new Dominio.Cliente();
+            Datos.ClienteContext oClienteContext = new Datos.ClienteContext();
+
+            //Busco un Cliente
+            do {
+                Console.Clear();
+                Console.WriteLine("***********// VENTA DE PAQUETES - FACTURAR A CLIENTE - VENTA \\***********");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.Write("Ingrese el DNI del Cliente ('Salir'):");
+                introTeclado= Console.ReadLine().Trim().ToUpper();
+                if (introTeclado.Equals("SALIR")) { 
+                    Salir = true;
+                }
+                else {
+                    oCliente = oClienteContext.SearchByDNI(introTeclado);
+                    if (oCliente.Id == 0) {
+                        Console.WriteLine("****** El Cliente no existe. Presione cualquier tecla para continuar");
+                        opcionInfo = Console.ReadKey(false);
+                        Console.Clear();
+                    }
+                    else {
+                        Console.WriteLine("**************Datos del Cliente*******************");
+                        Console.WriteLine($"ID:{oCliente.Id} | Apellido:{oCliente.Apellido} | Nombre:{oCliente.Dni} | Direccion:{oCliente.Direccion}");
+                        Console.WriteLine("");
+                        Salir=true;
+                    }
+                }
+            } while (oCliente.Id==0 && !Salir);
+
+            //Agrego Paquetes
+               
+
+        }
+
         /// <summary>
         /// Crea un  nuevo Paquete
         /// </summary>

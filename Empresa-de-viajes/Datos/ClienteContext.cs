@@ -11,6 +11,41 @@ namespace Datos
 {
     public class ClienteContext:Conexion
     {
+
+        /// <summary>
+        /// Busqueda de Cliente x DNI
+        /// </summary>
+        /// <param name="DNI"></param>
+        /// <returns></returns>
+        public Cliente SearchByDNI(string DNI) {
+            
+            string strqry = "Select top 1 ID,DNI,Nacionalidad,Provincia,Fnacimiento as Fnac,Apellido,Direccion,Nombre,EsParticular,Telefono,Localidad "+
+                " From Cliente Where Cliente.ESPARTICULAR=1 and DNI='" + DNI + "'";
+            try
+            {
+                //Hago query, transformo DataSet a DataTable y a List para manejar standar de C#
+                SqlDataAdapter DA = new SqlDataAdapter(strqry, base.GetConexion);
+                DataSet DS = new DataSet();
+                DA.Fill(DS);
+                DataTable DT = DS.Tables[0];
+                List<Dominio.Cliente> ListaClientes = DT.DataTableToList<Dominio.Cliente>();
+                if (ListaClientes.Count == 1) { 
+                    return ListaClientes.ElementAt(0);
+                }
+                else
+                {
+                    return new Cliente();
+                }
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine("Error en la insercion del Cliente: " + Ex.Message);
+                Console.WriteLine("Error en la insercion del Cliente: " + Ex.InnerException);
+                return new Cliente();
+            }
+
+        }
+
         //Conexion cn = new Conexion();
         /// <summary>
         /// Graba un Cliente en la Base de Datos

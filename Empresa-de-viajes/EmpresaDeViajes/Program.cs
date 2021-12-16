@@ -116,7 +116,17 @@ namespace EmpresaDeViajes
                         }
                         break;
                     case '4':
-                        //Ventas
+                        //Facturacion
+                        RetPantalla = MainScreen.MostrarMenuVentas();
+                        switch (RetPantalla.KeyChar) {
+                            //Facturar a Cliente
+                            case '1':
+                                MainScreen.FacturarACliente();
+                                break;
+                            //2 - Listar Factura
+                            case '2':
+                                break;
+                        }
                         break;
                 }
             } while ((int)RetPantalla.KeyChar != 27);

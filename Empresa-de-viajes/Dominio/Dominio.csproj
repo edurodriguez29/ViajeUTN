@@ -45,6 +45,8 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="Corporativo.cs" />
     <Compile Include="Empresa.cs" />
+    <Compile Include="FactDetalle.cs" />
+    <Compile Include="Factura.cs" />
     <Compile Include="Lugares.cs" />
     <Compile Include="Paquete.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

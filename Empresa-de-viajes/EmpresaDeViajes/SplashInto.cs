@@ -228,6 +228,10 @@ namespace EmpresaDeViajes
             ConsoleKeyInfo opcionInfo;
             Dominio.Cliente oCliente=new Dominio.Cliente();
             Datos.ClienteContext oClienteContext = new Datos.ClienteContext();
+            Dominio.Factura oFactura=new Dominio.Factura();
+            Datos.PaqueteContext oPaqContext= new Datos.PaqueteContext();
+            List<Dominio.Paquete> LstPaquetes;
+            int Cantitem=0;
 
             //Busco un Cliente
             do {
@@ -256,8 +260,88 @@ namespace EmpresaDeViajes
                 }
             } while (oCliente.Id==0 && !Salir);
 
-            //Agrego Paquetes
-               
+            //Si no selecciona ningun cliente
+            if (oCliente.Id == 0) { return; }
+
+            //Asigno Cliente seleccionado
+            oFactura.OCliente = oCliente;
+            Salir = false;
+
+            //Agrego de Paquetes como detalle de Factura
+            do {
+                Console.WriteLine("*********** Agregado de Paquetes ***********");
+                Console.WriteLine("");
+                Console.Write("Ingrese el nombre del paquete a buscar ('Salir'):");
+                introTeclado = Console.ReadLine().Trim().ToUpper();
+                if (introTeclado.Equals("SALIR")) {
+                    Salir = true;
+                }
+                else {
+                    LstPaquetes = oPaqContext.buscar(introTeclado);
+                    if (LstPaquetes.Count > 0) {
+                        foreach (var item in LstPaquetes) {
+                            Console.WriteLine($"ID:{item.Id} Nombre:{item.Nombre}");
+                        }
+
+                        //Que especifique que ID quiere Agregar
+                        Console.Write("Ingrese el ID del Paquete:");
+                        introTeclado = Console.ReadLine().Trim().ToUpper();
+                        var oPaquete =LstPaquetes.FirstOrDefault(x => x.Id == Convert.ToInt32(introTeclado));
+                        if (oPaquete == null) {
+                            Console.WriteLine("EL ID no se encuentra.");
+                        }
+                        else {
+                            Dominio.FactDetalle fDet=new Dominio.FactDetalle();
+                            fDet.paquete = oPaquete;
+                            
+                            //ingreso de Cantidad de Cuotas
+                            Console.Write("Ingrese Cantidad de Paquetes a Comprar:");
+                            introTeclado = Console.ReadLine().Trim().ToUpper();
+                            fDet.CantPaquetes = Convert.ToInt32(introTeclado); //Cant de paquetes
+                            fDet.Item = Cantitem++; //item del detalle de factura
+                            if (oPaquete.CantCuotas == 1) {
+                                Console.WriteLine("*** Este paquete solo admite 1 cuota");
+                            }
+                            else {
+                                Console.Write($"Ingrese Cantidad de cuotas (1-{oPaquete.CantCuotas}):");
+                                introTeclado = Console.ReadLine().Trim().ToUpper();
+                                int cantCuotas=Convert.ToInt32(introTeclado);
+                                if (!(cantCuotas >0 && cantCuotas <= oPaquete.CantCuotas)) {
+                                    Console.WriteLine( "La cantidad de cuotas no se encuentra delntreo del rango especificado del paquete.Presione cualqiuoer tecla para salir" );
+                                    introTeclado = Console.ReadLine().Trim().ToUpper();
+                                    break;
+                                }
+                            }
+                            if (oPaquete.EsNacional) {
+
+                                //debo calcular los subtotales para paquetes Nacionales
+                                fDet.Subtotal = ((oPaquete.Precio * oPaquete.ImpuestoNacional / 100) + oPaquete.Precio) * fDet.CantPaquetes;
+                            }
+                            else {
+                                fDet.Subtotal = oPaquete.Precio + oPaquete.ImpuestoInt;
+                            }
+                            //Agreggo el detalle
+                            oFactura.LFacturaDet.Add(fDet);
+                            Console.WriteLine("---->Paquete agregado a la factura");
+                        }
+                    }
+                }
+            } while (!Salir);
+
+            //Imprimo el detalle y persisto
+            if (oFactura.LFacturaDet.Count > 0) {
+                Console.WriteLine("**********************************************************************");
+                Console.WriteLine("Detalle de Paquetes de la Factura");
+
+                foreach (var item in oFactura.LFacturaDet) {
+                    string monto = string.Format("{0:N2}%", item.Subtotal);
+                    string tipo = item.paquete.EsNacional ? "Nacional" : "Internacional";
+                    Console.WriteLine($"Paquete:{item.paquete.Id} | Nombre{item.paquete.Nombre} | Tipo de Paquete:{tipo} | Cant: {item.CantCuotas} Subtotal:{monto}");
+                }
+
+                Console.WriteLine("Persistoooooooooo");
+                introTeclado = Console.ReadLine().Trim().ToUpper();
+            }
 
         }
 

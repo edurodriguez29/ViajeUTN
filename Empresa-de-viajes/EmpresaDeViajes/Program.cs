@@ -7,7 +7,7 @@ namespace EmpresaDeViajes
     internal class Program
     {
 
-        // MGN
+
         static void Main(string[] args)
         {
             EmpresaContext empresaContext = new Datos.EmpresaContext();
@@ -70,16 +70,16 @@ namespace EmpresaDeViajes
                                         RetPantalla = MainScreen.QueDeseaHacer();
                                         switch (RetPantalla.KeyChar) {
                                             case '1':
-                                                MainScreen.VerUnParticular();
+                                                MainScreen.VerInfoCli();
                                                 break;
                                             case '2':
-                                                MainScreen.VerUnCorporativo();
+                                                MainScreen.MostrarPantallaPrincipal(Emp);
                                                 break;
                                         }
                                         break;
 
                                     case '2':
-                                        MainScreen.VerUnCorporativo();//terminar, esta incompleto
+                                        MainScreen.VerUnCorporativo();
                                         Console.WriteLine("Desea ver la informacion de otro cliente?");
                                         MainScreen.QueDeseaHacer();
                                         switch (RetPantalla.KeyChar) {
@@ -95,7 +95,36 @@ namespace EmpresaDeViajes
                                 break;
 
                             case '3':
-                                MainScreen.ModificarCliente(); //Me quede por aca
+                                //Error al tratar de modificar el cliente
+                                RetPantalla = MainScreen.ModificarCliente();
+                                switch (RetPantalla.KeyChar) {
+                                    case '1':
+                                        MainScreen.ModificarParticular();
+                                        Console.WriteLine("¿Desea seguir editando?:");
+                                        MainScreen.QueDeseaHacer();
+                                        switch (RetPantalla.KeyChar) {
+                                            case '1':
+                                                MainScreen.ModificarCliente();
+                                                break;
+                                            case '2':
+                                                MainScreen.MostrarPantallaPrincipal(Emp);
+                                                break;
+                                        }
+                                        break;
+                                    case '2':
+                                        MainScreen.ModificarCorporativo();
+                                        Console.WriteLine("¿Desea seguir editando?:");
+                                        MainScreen.QueDeseaHacer();
+                                        switch (RetPantalla.KeyChar) {
+                                            case '1':
+                                                MainScreen.ModificarCorporativo();
+                                                break;
+                                            case '2':
+                                                MainScreen.MostrarPantallaPrincipal(Emp);
+                                                break;
+                                        }
+                                        break;
+                                }
                                 break;
                         }
                         break;
@@ -103,30 +132,7 @@ namespace EmpresaDeViajes
                         //Muestra Pantalla de Facturas
                         break;
                     case '3':
-                        //Paquetes
-                        RetPantalla = MainScreen.MostrarMenuPaquete();
-                        switch (RetPantalla.KeyChar) {
-                            //1 - Crear Nuevo Paquete
-                            case '1':
-                                MainScreen.CrearNuevoPaquete();
-                                break;
-                            //2 - Listar Paquetes
-                            case '2':
-                                break;
-                        }
-                        break;
-                    case '4':
-                        //Facturacion
-                        RetPantalla = MainScreen.MostrarMenuVentas();
-                        switch (RetPantalla.KeyChar) {
-                            //Facturar a Cliente
-                            case '1':
-                                MainScreen.FacturarACliente();
-                                break;
-                            //2 - Listar Factura
-                            case '2':
-                                break;
-                        }
+                        //Muestra Pantalla de Facturas
                         break;
                 }
             } while ((int)RetPantalla.KeyChar != 27);
@@ -137,6 +143,5 @@ namespace EmpresaDeViajes
 
 
         }
-
     }
 }

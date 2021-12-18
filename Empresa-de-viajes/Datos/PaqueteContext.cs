@@ -1,6 +1,7 @@
 ﻿using Dominio;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -57,6 +58,42 @@ namespace Datos
                 Console.WriteLine("Error en la insercion del Paquete: " + Ex.Message);
                 Console.WriteLine("Error en la insercion del Paquete: " + Ex.InnerException);
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// BUsca un paquete y lpo devuelve
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
+        public List<Paquete> buscar(string nombre)
+        {
+            string par1 = "'%" + nombre + "%'";
+            string strqry = "SELECT [ID],[NOMBRE],[PRECIO],[FECHA_INICIO],[FECHA_FIN],[ESNACIONAL],[COTIZACIONDOL],[REQUIEREVISA] " +
+                ",[IMPUESTONAC],[IMPUESTOINT],[CANTCUOTAS],[MONTOCUOTA],[ACTIVO],[CANTDIAS] "+
+                " FROM [dbo].[PAQUETE] Where Activo=1 and NOMBRE like " + par1 + " order by [NOMBRE]";
+            try
+            {
+                //Hago query, transformo DataSet a DataTable y a List para manejar standar de C#
+                SqlDataAdapter DA = new SqlDataAdapter(strqry, base.GetConexion);
+                DataSet DS = new DataSet();
+                DA.Fill(DS);
+                DataTable DT = DS.Tables[0];
+                List<Dominio.Paquete> ListaPquetes = DT.DataTableToList<Dominio.Paquete>();
+                if (ListaPquetes.Count == 1)
+                {
+                    return ListaPquetes;
+                }
+                else
+                {
+                    return new List<Paquete>();
+                }
+            }
+            catch (Exception Ex)
+            {
+                Console.WriteLine("Error en la insercion del Cliente: " + Ex.Message);
+                Console.WriteLine("Error en la insercion del Cliente: " + Ex.InnerException);
+                return new List<Paquete>();
             }
         }
     }

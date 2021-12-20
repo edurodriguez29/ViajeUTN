@@ -18,8 +18,8 @@ namespace Datos
         /// </summary>
         public Conexion()
         {
-            string server = @"LAPTOP-PC0K8BMI\SQLEXPRESS";
-            //string server = @"DESKTOP-EC386AH";
+            //string server = @"LAPTOP-PC0K8BMI\SQLEXPRESS";
+            string server = @"DESKTOP-EC386AH";
             string baseDatos = "TrabajoIntegrador";
             string IntegratedSecurity = "true";
             string persistSecurityInfo = "true";

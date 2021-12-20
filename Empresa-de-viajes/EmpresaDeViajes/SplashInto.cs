@@ -52,10 +52,9 @@ namespace EmpresaDeViajes
                 Console.WriteLine("1 - Crear un nuevo cliente");
                 Console.WriteLine("2 - Ver datos de un cliente");
                 Console.WriteLine("3 - Modificar datos de un cliente");
-                Console.WriteLine("4 - Eliminar un cliente");
                 Console.WriteLine("Esc - Para ir hacia atras");
                 opcion = Console.ReadKey(true);
-            } while (((int)opcion.KeyChar != 27) && ((int)opcion.KeyChar >= 1 && (int)opcion.KeyChar <= 4));
+            } while (((int)opcion.KeyChar != 27) && ((int)opcion.KeyChar >= 1 && (int)opcion.KeyChar <= 3));
             return opcion;
         }
 
@@ -296,10 +295,10 @@ namespace EmpresaDeViajes
         // Revisar, no modifica los usuarios
         public void ModificarParticular()
         {
+            Console.Clear();
             Dominio.Cliente oClipArt = new Dominio.Cliente();
             ClienteContext cliContx = new ClienteContext();
             int id;
-            Console.Clear();
             Console.WriteLine("*****************// PARTICULAR \\******************");
             Console.WriteLine();
             Console.Write("Ingrese el ID del cliente a modificar: ");
@@ -354,10 +353,10 @@ namespace EmpresaDeViajes
         // Revisar, no modifica los usuarios
         public void ModificarCorporativo()
         {
+            Console.Clear();
             Dominio.Corporativo corp = new Dominio.Corporativo();
             ClienteContext cliCtx = new ClienteContext();
-            int id;
-            Console.Clear();
+            int id;;
             Console.WriteLine("*****************// PARTICULAR \\******************");
             Console.WriteLine();
             Console.Write("Ingrese el ID del cliente a modificar: ");
@@ -410,5 +409,200 @@ namespace EmpresaDeViajes
             }
             return;
         }
+
+        //------------------- Aqui arranca el menu de paquetes ------------------- //
+
+        /// <summary>
+        /// Menu Paquetes
+        /// </summary>
+        /// <param name="Emp"></param>
+        /// <returns></returns>
+        public ConsoleKeyInfo MostrarMenuPaquetes()
+        {
+            ConsoleKeyInfo opcion;
+            do {
+                Console.Clear();
+                Console.WriteLine("********** Menu Paquetes ***********");
+                Console.WriteLine("Eliga una de las siguientes opciones:");
+                Console.WriteLine("1 - Crear un nuevo paquete");
+                Console.WriteLine("2 - Ver datos de un paquete");
+                Console.WriteLine("3 - Modificar datos de un paquete");
+                Console.WriteLine("Esc - Para ir hacia atras");
+                opcion = Console.ReadKey(true);
+            } while (((int)opcion.KeyChar != 27) && ((int)opcion.KeyChar >= 1 && (int)opcion.KeyChar <= 3));
+            return opcion;
+        }
+
+        public void NuevoPaquete()
+        {
+            Dominio.Paquete nuevoPaq = new Dominio.Paquete();
+
+            Console.Clear();
+            Console.WriteLine("***********// NUEVO CLIENTE PARTICULAR \\***********");
+
+            Console.Write("Nombre:");
+            nuevoPaq.Nombre = Console.ReadLine();
+
+            Console.Write("Precio:");
+            nuevoPaq.Precio = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture); //Formatea la entrada sin importar si lleva una "," o un "."
+
+            Console.Write("Fecha de Inicio(DD-MM-AAAA):");
+            var strfInc = Console.ReadLine();
+            nuevoPaq.Fecha_Inicio = DateTime.ParseExact(strfInc, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+            Console.Write("Fecha de Fin(DD-MM-AAAA):");
+            var strfFin = Console.ReadLine();
+            nuevoPaq.Fecha_Fin = DateTime.ParseExact(strfFin, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+            Console.Write("Fecha de Viaje(DD-MM-AAAA):");
+            var strfVia = Console.ReadLine();
+            nuevoPaq.Fecha_Viaje = DateTime.ParseExact(strfVia, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+            Console.Write("Indique ingresando \"true\" o \"false\" si el paquete es NACIONAL:");
+            nuevoPaq.EsNacional = Convert.ToBoolean(Console.ReadLine());
+
+            Console.Write("Cotizacion en dolar (si el paquete es INTERNACIONAL, de lo contrario solo ingrese un \"0\"):");
+            nuevoPaq.CotizacionDol = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.Write("Si el paquete es INTERNACIONAL inque con \"true\" o \"false\" si requeire visa:");
+            nuevoPaq.RequiereVisa = Convert.ToBoolean(Console.ReadLine());
+
+            Console.Write("Si el paquete es NACIONAL, a continuacion ingrese el porcentaje del \"Impuesto Nacional\":");
+            nuevoPaq.ImpuestoNacional = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.Write("Si el paquete es INTERNACIONAL, a continuacion ingrese el valor fijo del \"Impuesto Nacional\":");
+            nuevoPaq.ImpuestoInt = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.Write("Cantidad de cuotas:");
+            nuevoPaq.CantCuotas = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Monto de cuotas:");
+            nuevoPaq.MontoCuota = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.Write("Indique ingresando \"true\" o \"false\" si el paquete se encuentra activo:");
+            nuevoPaq.Activo = Convert.ToBoolean(Console.ReadLine());
+
+            Console.Write("Cantidad de dias:");
+            nuevoPaq.CantDias = Convert.ToInt32(Console.ReadLine());
+
+            // Problemas con la variable retorno
+
+            //Grabo Paquete
+            /*PaqueteContext PCtx = new PaqueteContext();
+            var retorno = PCtx.PutPaquete(nuevoPaq);
+            if (retorno > 0) {
+                Console.WriteLine("Se ha creado el Paquete exitosamente, su ID es: {0}", retorno.ToString());
+            }
+            else { Console.WriteLine("Se ha detectado un error en la creacion del Paquete"); };
+            Console.WriteLine(""); */ 
+        }
+
+        public void VerPaquete()
+        {
+            Console.Clear();
+            ConsoleKeyInfo opcionInfo;
+            Console.WriteLine("*****************// VER INFORMACIÓN DE UN PARTICULAR \\******************");
+
+            PaqueteContext PaqCtx = new PaqueteContext();
+            Console.Write("Ingrese Nombre:");
+            string nom = Console.ReadLine();
+            List<Dominio.Paquete> ListaPaquetes = PaqCtx.GetPaquetes(nom);
+
+            if (ListaPaquetes.Count > 0) {
+                Console.Clear();
+                Console.WriteLine("---- Listado de Paquetes encontrados----");
+                foreach (var item in ListaPaquetes) {
+
+                    Console.WriteLine($"ID:{item.Id} | Nombre:{item.Nombre} Precio: {item.Precio} Fecha Inicio:{item.Fecha_Inicio} Fecha Fin:{item.Fecha_Fin}");
+                }
+            }
+            else {
+                Console.Clear();
+                Console.WriteLine("---- No se encuentran datos para la consulta que esta realizando----");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.Write("Presione cualquier tecla para continuar");
+            opcionInfo = Console.ReadKey(true);
+        }
+
+
+
+        // Terminar
+        /*public void ModificarPaquete()
+        {
+            Console.Clear();
+            Dominio.Paquete modPaq = new Dominio.Paquete();
+            PaqueteContext paqContx = new PaqueteContext();
+            string nombre;
+            Console.WriteLine("*****************//* PAQUETE \\******************");
+            Console.WriteLine();
+            Console.Write("Ingrese el nombre del paquete a modificar: ");
+            nombre = Console.ReadLine();
+            List<Dominio.Paquete> ListaPaquetes = paqContx.SetPaquete();
+            modPaq = ListaPaquetes.Find(x => x.Nombre == nombre);
+            if (modPaq != null) {
+
+                Console.Write("Nombre:");
+                modPaq.Nombre = Console.ReadLine();
+
+                Console.Write("Precio:");
+                modPaq.Precio = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture); //Formatea la entrada sin importar si lleva una "," o un "."
+
+                Console.Write("Fecha de Inicio(DD-MM-AAAA):");
+                var strfInc = Console.ReadLine();
+                modPaq.Fecha_Inicio = DateTime.ParseExact(strfInc, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+                Console.Write("Fecha de Fin(DD-MM-AAAA):");
+                var strfFin = Console.ReadLine();
+                modPaq.Fecha_Fin = DateTime.ParseExact(strfFin, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+                Console.Write("Fecha de Viaje(DD-MM-AAAA):");
+                var strfVia = Console.ReadLine();
+                modPaq.Fecha_Viaje = DateTime.ParseExact(strfVia, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+
+                Console.Write("Indique ingresando \"true\" o \"false\" si el paquete es NACIONAL:");
+                modPaq.EsNacional = Convert.ToBoolean(Console.ReadLine());
+
+                Console.Write("Cotizacion en dolar (si el paquete es INTERNACIONAL, de lo contrario solo ingrese un \"0\"):");
+                modPaq.CotizacionDol = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                Console.Write("Si el paquete es INTERNACIONAL inque con \"true\" o \"false\" si requeire visa:");
+                modPaq.RequiereVisa = Convert.ToBoolean(Console.ReadLine());
+
+                Console.Write("Si el paquete es NACIONAL, a continuacion ingrese el porcentaje del \"Impuesto Nacional\":");
+                modPaq.ImpuestoNacional = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                Console.Write("Si el paquete es INTERNACIONAL, a continuacion ingrese el valor fijo del \"Impuesto Nacional\":");
+                modPaq.ImpuestoInt = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                Console.Write("Cantidad de cuotas:");
+                modPaq.CantCuotas = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Monto de cuotas:");
+                modPaq.MontoCuota = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                Console.Write("Indique ingresando \"true\" o \"false\" si el paquete se encuentra activo:");
+                modPaq.Activo = Convert.ToBoolean(Console.ReadLine());
+
+                Console.Write("Cantidad de dias:");
+                modPaq.CantDias = Convert.ToInt32(Console.ReadLine());
+
+                //Regrabo Cliente
+                var retorno = paqContx.SetPaquete(modPaq);
+                if (retorno > 0) {
+                    Console.WriteLine("Se ha modificado el paquete exitosamente", retorno.ToString());
+                }
+                else { Console.WriteLine("Se ha detectado un error en al intentar modificar el paquete"); };
+                Console.WriteLine("");
+            }
+            else {
+                Console.Clear();
+                Console.WriteLine("---- No se encuentran datos para la consulta que esta realizando----");
+            }
+            return;
+
+        }*/
+
     }
 }

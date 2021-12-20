@@ -27,3 +27,9 @@ D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Domi
 D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Dominio\obj\Debug\Dominio.dll
 D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Dominio\obj\Debug\Dominio.pdb
+C:\Users\matt9\Desktop\empviajeRep\Empresa-de-viajes\Dominio\bin\Debug\Dominio.dll
+C:\Users\matt9\Desktop\empviajeRep\Empresa-de-viajes\Dominio\bin\Debug\Dominio.pdb
+C:\Users\matt9\Desktop\empviajeRep\Empresa-de-viajes\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
+C:\Users\matt9\Desktop\empviajeRep\Empresa-de-viajes\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\matt9\Desktop\empviajeRep\Empresa-de-viajes\Dominio\obj\Debug\Dominio.dll
+C:\Users\matt9\Desktop\empviajeRep\Empresa-de-viajes\Dominio\obj\Debug\Dominio.pdb

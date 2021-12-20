@@ -176,7 +176,7 @@ namespace Datos
         {
 
             string par1 = "'%" + ID + "%'";
-            string strqry = "Select ID, DNI,Nacionalidad,Provincia,Fnacimiento as Fnac,Apellido,Direccion,Nombre,EsParticular,Telefono,Localidad From Cliente Where Cliente.ESPARTICULAR=1 and ID like " + par1;
+            string strqry = "U ID, DNI,Nacionalidad,Provincia,Fnacimiento as Fnac,Apellido,Direccion,Nombre,EsParticular,Telefono,Localidad From Cliente Where Cliente.ESPARTICULAR=1 and ID like " + par1;
 
             try
             {
@@ -198,7 +198,7 @@ namespace Datos
 
 
         /// <summary>
-        /// Trae un cliente especifico, por medio del ID
+        /// Modifica un cliente especifico, por medio del ID
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
@@ -228,7 +228,11 @@ namespace Datos
             }
         }
 
-
+        /// <summary>
+        /// Trae un cliente especifico por medio del id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public List<Dominio.Cliente> GetId(int id)
         {
 

@@ -128,20 +128,76 @@ namespace EmpresaDeViajes
                                 break;
                         }
                         break;
+
+
+
+
+
                     case '2':
                         //Muestra Pantalla de Facturas
                         break;
+
+
+
+
+
+
                     case '3':
-                        //Muestra Pantalla de Facturas
+                        //Muestra Pantalla de Paquetes
+                        RetPantalla = MainScreen.MostrarMenuPaquetes();
+                        switch (RetPantalla.KeyChar) {
+                            //Paquete Nuevo
+                            case '1':
+                                MainScreen.NuevoPaquete();
+                                Console.WriteLine("Desea cargar otro paquete?");
+                                RetPantalla = MainScreen.QueDeseaHacer();
+                                switch (RetPantalla.KeyChar) {
+                                    case '1':
+                                        MainScreen.NuevoPaquete();
+                                        break;
+                                    case '2':
+                                        MainScreen.MostrarPantallaPrincipal(Emp);
+                                        break;
+                                }
+                                break;
+
+                            case '2':
+                                MainScreen.VerPaquete();
+                                Console.WriteLine("Desea ver otro paquete?");
+                                RetPantalla = MainScreen.QueDeseaHacer();
+                                switch (RetPantalla.KeyChar) {
+                                    case '1':
+                                        MainScreen.VerPaquete();
+                                        break;
+                                    case '2':
+                                        MainScreen.MostrarPantallaPrincipal(Emp);
+                                        break;
+                                }break;
+
+                            //case '3':    TERMINAR
+                                //Error al tratar de modificar el paquete
+                               /* RetPantalla = MainScreen.ModificarCliente();
+                                switch (RetPantalla.KeyChar) {
+                                    case '1':
+                                        MainScreen.ModificarPaquete();
+                                        Console.WriteLine("¿Desea seguir editando?:");
+                                        MainScreen.QueDeseaHacer();
+                                        switch (RetPantalla.KeyChar) {
+                                            case '1':
+                                                MainScreen.ModificarPaquete();
+                                                break;
+                                            case '2':
+                                                MainScreen.MostrarPantallaPrincipal(Emp);
+                                                break;
+                                        }
+                                        break;
+                               }
+                               break;*/
+                        }
                         break;
-                }
+                } break;
             } while ((int)RetPantalla.KeyChar != 27);
-
-
-
             Console.Write("FIN");
-
-
         }
     }
 }

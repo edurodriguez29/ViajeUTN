@@ -25,6 +25,7 @@ namespace Dominio
         private bool activo = false;
         private int cantDias = 0;
         private List<Lugares> LstLugares= new List<Lugares>();
+      
 
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }

@@ -139,10 +139,8 @@ namespace Datos
         public int SetParticular(Cliente cli)
         {
 
-            string strqry = "Update [dbo].[CLIENTE] SET Values(@DNI,@NACIONALIDAD,@PROVINCIA,@FNACIMIENTO,@APELLIDO,@DIRECCION,@NOMBRE,@ESPARTICULAR,@TELEFONO,@LOCALIDAD,@CUIT,@RAZON_SOCIAL) WHERE ID like";
+            string strqry = "Update [dbo].[CLIENTE] SET (DNI = @DNI,@NACIONALIDAD,@PROVINCIA,@FNACIMIENTO,@APELLIDO,@DIRECCION,@NOMBRE,@ESPARTICULAR,@TELEFONO,@LOCALIDAD,@CUIT,@RAZON_SOCIAL) WHERE ID = @ID";
 
-            /*string strqry = "INSERT INTO [dbo].[CLIENTE] ([DNI],[NACIONALIDAD],[PROVINCIA],[FNACIMIENTO],[APELLIDO],[DIRECCION],[NOMBRE],[ESPARTICULAR],[TELEFONO],[LOCALIDAD]) "; //,[CUIT],[RAZON_SOCIAL]
-            strqry += " Values(@DNI,@NACIONALIDAD,@PROVINCIA,@FNACIMIENTO,@APELLIDO,@DIRECCION,@NOMBRE,@ESPARTICULAR,@TELEFONO,@LOCALIDAD);select SCOPE_IDENTITY();"; //,@CUIT,@RAZON_SOCIAL*/
             try
             {
                 SqlCommand cmd = new SqlCommand(strqry, base.GetConexion);

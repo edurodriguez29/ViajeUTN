@@ -528,19 +528,19 @@ namespace EmpresaDeViajes
 
 
 
-        // Terminar
-        /*public void ModificarPaquete()
+
+        public void ModificarPaquete()
         {
             Console.Clear();
             Dominio.Paquete modPaq = new Dominio.Paquete();
             PaqueteContext paqContx = new PaqueteContext();
             string nombre;
-            Console.WriteLine("*****************//* PAQUETE \\******************");
+            Console.WriteLine("*****************// PAQUETE \\******************");
             Console.WriteLine();
             Console.Write("Ingrese el nombre del paquete a modificar: ");
             nombre = Console.ReadLine();
-            List<Dominio.Paquete> ListaPaquetes = paqContx.SetPaquete();
-            modPaq = ListaPaquetes.Find(x => x.Nombre == nombre);
+            List<Dominio.Paquete> ListaPaquetes = paqContx.SetPaquete(nombre);
+            modPaq = ListaPaquetes.First(x => x.Nombre == nombre);
             if (modPaq != null) {
 
                 Console.Write("Nombre:");
@@ -602,7 +602,7 @@ namespace EmpresaDeViajes
             }
             return;
 
-        }*/
+        }
 
     }
 }

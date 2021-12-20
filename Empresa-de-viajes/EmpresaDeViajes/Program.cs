@@ -174,9 +174,9 @@ namespace EmpresaDeViajes
                                         break;
                                 }break;
 
-                            //case '3':    TERMINAR
+                            case '3':    TERMINAR
                                 //Error al tratar de modificar el paquete
-                               /* RetPantalla = MainScreen.ModificarCliente();
+                                RetPantalla = MainScreen.ModificarCliente();
                                 switch (RetPantalla.KeyChar) {
                                     case '1':
                                         MainScreen.ModificarPaquete();
@@ -192,7 +192,7 @@ namespace EmpresaDeViajes
                                         }
                                         break;
                                }
-                               break;*/
+                               break;
                         }
                         break;
                 } break;

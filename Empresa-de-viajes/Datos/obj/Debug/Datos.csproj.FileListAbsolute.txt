@@ -7,3 +7,13 @@ C:\Users\matt9\Desktop\empviajeRep\Empresa-de-viajes\Datos\bin\Debug\Dominio.pdb
 C:\Users\matt9\Desktop\empviajeRep\Empresa-de-viajes\Datos\obj\Debug\Datos.csproj.CopyComplete
 C:\Users\matt9\Desktop\empviajeRep\Empresa-de-viajes\Datos\obj\Debug\Datos.dll
 C:\Users\matt9\Desktop\empviajeRep\Empresa-de-viajes\Datos\obj\Debug\Datos.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Datos\obj\Debug\Datos.dll
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Datos\obj\Debug\Datos.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Datos\bin\Debug\Datos.dll.config
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Datos\bin\Debug\Datos.dll
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Datos\bin\Debug\Datos.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Datos\bin\Debug\Dominio.dll
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Datos\bin\Debug\Dominio.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Datos\obj\Debug\Datos.csproj.CopyComplete

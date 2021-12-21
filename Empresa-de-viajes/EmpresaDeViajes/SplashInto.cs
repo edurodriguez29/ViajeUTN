@@ -306,10 +306,13 @@ namespace EmpresaDeViajes
                                 Console.Write($"Ingrese Cantidad de cuotas (1-{oPaquete.CantCuotas}):");
                                 introTeclado = Console.ReadLine().Trim().ToUpper();
                                 int cantCuotas=Convert.ToInt32(introTeclado);
-                                if (!(cantCuotas >0 && cantCuotas <= oPaquete.CantCuotas)) {
-                                    Console.WriteLine( "La cantidad de cuotas no se encuentra delntreo del rango especificado del paquete.Presione cualqiuoer tecla para salir" );
+                                if (!(cantCuotas > 0 && cantCuotas <= oPaquete.CantCuotas)) {
+                                    Console.WriteLine("La cantidad de cuotas no se encuentra delntreo del rango especificado del paquete.Presione cualqiuoer tecla para salir");
                                     introTeclado = Console.ReadLine().Trim().ToUpper();
                                     break;
+                                }
+                                else {
+                                    fDet.CantCuotas = cantCuotas;
                                 }
                             }
                             if (oPaquete.EsNacional) {
@@ -334,15 +337,20 @@ namespace EmpresaDeViajes
                 Console.WriteLine("Detalle de Paquetes de la Factura");
 
                 foreach (var item in oFactura.LFacturaDet) {
-                    string monto = string.Format("{0:N2}%", item.Subtotal);
+                    string monto = string.Format("{0:N2}", item.Subtotal);
                     string tipo = item.paquete.EsNacional ? "Nacional" : "Internacional";
                     Console.WriteLine($"Paquete:{item.paquete.Id} | Nombre{item.paquete.Nombre} | Tipo de Paquete:{tipo} | Cant: {item.CantCuotas} Subtotal:{monto}");
                 }
-
-                Console.WriteLine("Persistoooooooooo");
+                FacturaContext fContext=new FacturaContext();
+                if (fContext.PutFactura(oFactura)) {
+                    Console.WriteLine($"La factura {oFactura.IDFactura} ha sido insertada en BD con todo su detalle");
+                }
+                else {
+                    Console.WriteLine($"Error en la insercion de la Factura");
+                }
+                Console.WriteLine("Su factura ha sido creada. Pulse cualquier tecla para continuar.");
                 introTeclado = Console.ReadLine().Trim().ToUpper();
             }
-
         }
 
         /// <summary>
@@ -568,5 +576,7 @@ namespace EmpresaDeViajes
             return opcionTipoCliente;
         }
 
+
+     
     }
 }

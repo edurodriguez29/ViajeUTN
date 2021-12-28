@@ -125,6 +125,7 @@ namespace EmpresaDeViajes
                                 break;
                             //2 - Listar Factura
                             case '2':
+                                MainScreen.ListarFacturaCliente();
                                 break;
                         }
                         break;

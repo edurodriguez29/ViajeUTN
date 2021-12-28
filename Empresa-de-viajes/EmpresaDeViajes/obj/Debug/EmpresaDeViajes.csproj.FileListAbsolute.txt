@@ -26,3 +26,17 @@ D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\Empr
 D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Datos.dll.config
 D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Dominio.pdb
 D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador2\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.csproj.CopyComplete
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\EmpresaDeViajes.exe.config
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\EmpresaDeViajes.exe
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\EmpresaDeViajes.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Datos.dll
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Dominio.dll
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Datos.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Datos.dll.config
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\bin\Debug\Dominio.pdb
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.csproj.AssemblyReference.cache
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.csproj.SuggestedBindingRedirects.cache
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.csproj.CoreCompileInputs.cache
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.csproj.CopyComplete
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.exe
+D:\Documentos\Cursos\C-Sharp-Neoris\UTNTrabajoIntegrador3\Empresa-de-viajes\EmpresaDeViajes\obj\Debug\EmpresaDeViajes.pdb

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -217,6 +218,39 @@ namespace EmpresaDeViajes
                 opcionGuardado = Console.ReadKey(false);
             } while (((int)opcionGuardado.KeyChar <= 1 && (int)opcionGuardado.KeyChar >= 2) && (int)opcionGuardado.KeyChar != 27);
             return opcionGuardado;
+        }
+        /// <summary>
+        /// Lista facturas de Clientes
+        /// </summary>
+        public void ListarFacturaCliente() {
+            ConsoleKeyInfo opcionInfo;
+            Console.WriteLine("*****************// LISTAR FACTURAS DE CLIENTES \\******************");
+
+            FacturaContext FactCtx = new FacturaContext();
+            Console.Write("Ingrese Apellido:");
+            string ap = Console.ReadLine();
+            DataTable DTFacturas = FactCtx.GetFacturas(ap);
+
+            if (DTFacturas.Rows.Count > 0) {
+                DataRow row;
+                for (int i = 0; i < DTFacturas.Rows.Count; i++) {
+                    row = DTFacturas.Rows[i];
+                    string subtotal=string.Format("{0:N2}", row["SUBTOTAL"]);
+                    DateTime fechaFact = Convert.ToDateTime(row["FECHA"]);
+                    Console.WriteLine($"{row["IDCLIENTE"].ToString(),10}" +
+                                        $"{row["DNI"],10}" +
+                                        $"{row["APELLIDO"],10}" +
+                                        $"{row["NOMBRE"],15}" +
+                                        $"{row["IDpaquete"],5}" +
+                                        $"{row["paqueteNombre"],20}" +
+                                        $"{fechaFact.ToString("dd/MM/yyyy"),12}" +
+                                        $"{subtotal,15}");
+                }
+            }
+
+      
+            Console.WriteLine("**** presione cualquier tecla para continuar");
+            opcionInfo = Console.ReadKey(false);
         }
 
         /// <summary>
